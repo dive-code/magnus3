@@ -1,410 +1,1150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Magnus</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", Arial, sans-serif;
-      background: #000;
-      color: #fff;
-    }
 
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      background: #111;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid #222;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+<title>Nextel Connect | Your World. Your Network.</title>
 
-    .logo img {
-      width: 45px;
-      height: auto;
-      border-radius: 8px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    .logo h1 {
-      font-size: 18px;
-      font-weight: 600;
-      background: linear-gradient(to right, #ff9900, #ff0057);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-    }
+<style>
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.3s ease;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    nav a:hover {
-      color: orange;
-    }
+body{
 
-    /* 3 DOT MENU (Mobile) */
-    .menu-toggle {
-      display: none;
-      font-size: 24px;
-      color: orange;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
+font-family:'Poppins',sans-serif;
 
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #111;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        width: 160px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      }
+background:#041B17;
 
-      nav a {
-        padding: 10px;
-        border-bottom: 1px solid #222;
-      }
+color:#fff;
 
-      nav a:last-child { border-bottom: none; }
+overflow-x:hidden;
 
-      input[type="checkbox"]:checked ~ nav {
-        display: flex;
-      }
+}
 
-      .menu-toggle { display: block; }
-    }
+/* =========================
+COLORS
+========================= */
 
-    /* HERO ANIMATION */
-    .hero {
-      opacity: 0;
-      background: radial-gradient(circle at center, rgba(255,153,0,0.08), transparent 70%);
-      animation: heroBgFade 1.5s ease forwards;
-      animation-delay: 0.2s;
-      padding: 90px 20px 60px;
-      text-align: center;
-    }
+:root{
 
-    .hero h1,
-    .hero h2,
-    .hero p,
-    .hero a {
-      opacity: 0;
-      transform: translateY(25px);
-      animation: fadeUp 1s ease forwards;
-    }
+--primary:#0FAF75;
 
-    .hero h1 {
-      font-size: 34px;
-      font-weight: 700;
-      background: linear-gradient(to right, #ff9900, #ff0057);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
-      animation-delay: 0.4s;
-    }
+--secondary:#18D18A;
 
-    .hero h2 {
-      font-size: 22px;
-      font-weight: 500;
-      background: linear-gradient(to right, #ff9900, #ff0057);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 25px;
-      animation-delay: 0.8s;
-    }
+--gold:#F5C542;
 
-    .hero p {
-      max-width: 750px;
-      margin: auto;
-      color: #ccc;
-      line-height: 1.7;
-      font-size: 15px;
-      animation-delay: 1.2s;
-    }
+--dark:#041B17;
 
-    .hero a {
-      animation-delay: 1.6s;
-    }
+--card:#0A2A23;
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(25px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+--text:#F8F8F8;
 
-    @keyframes heroBgFade {
-      from { opacity: 0; background: radial-gradient(circle at center, rgba(255,153,0,0), transparent 70%); }
-      to { opacity: 1; background: radial-gradient(circle at center, rgba(255,153,0,0.08), transparent 70%); }
-    }
+--muted:#BFC9C5;
 
-    /* GENERAL STYLING */
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
+}
 
-    h1, h2, h3 {
-      font-weight: 700;
-      margin-bottom: 16px;
-      background: linear-gradient(to right, #ff9900, #ff0057);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* =========================
+HEADER
+========================= */
 
-    p {
-      color: #ccc;
-      font-size: 15px;
-      line-height: 1.6;
-    }
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:85px;
+    padding:0 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(4,27,23,.95);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    z-index:999;
+}
 
-    .hero-image img {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      border-radius: 12px;
-      margin: 20px auto;
-      display: block;
-    }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
 
-    .cta {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 40px;
-      font-size: 16px;
-      font-weight: bold;
-      color: white;
-      background: linear-gradient(to right, #ff9900, #ff0057);
-      border-radius: 40px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+.logo img{
+    width:52px;
+    height:52px;
+    object-fit:contain;
+    border-radius:12px;
+    display:block;
+}
 
-    .cta:hover { transform: scale(1.05); }
+.logo h1{
+    font-size:28px;
+    font-weight:800;
+    line-height:1;
+    margin:0;
+    background:linear-gradient(90deg,#22E39A,#F5C542);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
 
-    /* PLAN CARDS */
-    .plan-card {
-      background: #111;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 24px;
-      text-align: left;
-      position: relative;
-      transition: all 0.3s ease;
-    }
+nav{
 
-    .plan-card:hover {
-      box-shadow: 0 0 20px rgba(255, 153, 0, 0.2);
-      transform: translateY(-4px);
-    }
+display:flex;
 
-    .plan-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-    }
+gap:28px;
 
-    .plan-card ul li {
-      margin: 6px 0;
-      font-size: 14px;
-      color: #fff;
-    }
+}
 
-    .plan-card .btn {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-      padding: 12px;
-      border: none;
-      border-radius: 25px;
-      color: white;
-      font-weight: 600;
-      background: linear-gradient(to right, #ff9900, #ff0057);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+nav a{
 
-    .plan-card .btn:hover { transform: scale(1.05); }
+text-decoration:none;
 
-    /* RECOMMENDED BADGE */
-    .recommended {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: linear-gradient(to right, #ff9900, #ff0057);
-      color: white;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 6px 10px;
-      border-radius: 8px;
-      animation: glowPulse 1.8s infinite alternate;
-    }
+color:white;
 
-    @keyframes glowPulse {
-      from { box-shadow: 0 0 5px #ff9900; }
-      to { box-shadow: 0 0 20px #ff0057; }
-    }
+font-size:15px;
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      background: #111;
-      font-size: 13px;
-      color: #aaa;
-    }
-  </style>
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:var(--gold);
+
+}
+
+.menu{
+
+display:none;
+
+font-size:30px;
+
+cursor:pointer;
+
+color:var(--secondary);
+
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+
+padding:160px 8% 100px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+text-align:center;
+
+background:
+
+radial-gradient(circle at top right,
+
+rgba(24,209,138,.18),
+
+transparent 40%),
+
+radial-gradient(circle at bottom left,
+
+rgba(245,197,66,.12),
+
+transparent 35%);
+
+}
+
+.hero h1{
+
+font-size:64px;
+
+font-weight:800;
+
+line-height:1.1;
+
+max-width:900px;
+
+background:linear-gradient(90deg,#22E39A,#F5C542);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+margin-bottom:20px;
+
+}
+
+.hero h2{
+
+font-size:28px;
+
+font-weight:500;
+
+margin-bottom:25px;
+
+color:#EAEAEA;
+
+}
+
+.hero p{
+
+max-width:760px;
+
+font-size:18px;
+
+line-height:1.9;
+
+color:var(--muted);
+
+}
+
+.hero img{
+
+width:100%;
+
+max-width:900px;
+
+margin-top:45px;
+
+border-radius:24px;
+
+box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.cta{
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:18px 45px;
+
+background:linear-gradient(90deg,var(--secondary),var(--gold));
+
+color:#041B17;
+
+font-weight:700;
+
+border-radius:50px;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.cta:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 15px 35px rgba(24,209,138,.35);
+
+}
+
+/* =========================
+TRUST BAR
+========================= */
+
+.trust{
+
+margin-top:70px;
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+width:100%;
+
+max-width:1100px;
+
+}
+
+.trust-box{
+
+background:var(--card);
+
+padding:30px;
+
+border-radius:18px;
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.trust-box h3{
+
+font-size:34px;
+
+color:var(--gold);
+
+margin-bottom:8px;
+
+}
+
+.trust-box p{
+
+color:var(--muted);
+
+font-size:15px;
+
+}
+
+/* =========================
+SECTION
+========================= */
+
+section{
+
+padding:90px 8%;
+
+max-width:1300px;
+
+margin:auto;
+
+}
+
+.section-title{
+
+text-align:center;
+
+font-size:44px;
+
+font-weight:800;
+
+margin-bottom:18px;
+
+background:linear-gradient(90deg,var(--secondary),var(--gold));
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.section-subtitle{
+
+text-align:center;
+
+max-width:760px;
+
+margin:0 auto 60px;
+
+font-size:17px;
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+/* =========================
+SERVICES
+========================= */
+
+.services{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+}
+
+.service-card{
+
+background:var(--card);
+
+padding:35px;
+
+border-radius:22px;
+
+border:1px solid rgba(255,255,255,.06);
+
+transition:.35s;
+
+}
+
+.service-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 40px rgba(24,209,138,.18);
+
+}
+
+.service-card i{
+
+font-size:45px;
+
+color:var(--gold);
+
+margin-bottom:20px;
+
+display:block;
+
+}
+
+.service-card h3{
+
+font-size:25px;
+
+margin-bottom:15px;
+
+}
+
+.service-card p{
+
+color:var(--muted);
+
+line-height:1.8;
+
+}
+
+/* =========================
+WHY NEXTEL
+========================= */
+
+.why{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+margin-top:30px;
+
+}
+
+.why-card{
+
+background:var(--card);
+
+padding:30px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.why-card h3{
+
+font-size:23px;
+
+margin-bottom:15px;
+
+color:var(--gold);
+
+}
+
+.why-card p{
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+/* =========================
+LIVE STATS
+========================= */
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+margin-top:40px;
+
+}
+
+.stat{
+
+background:var(--card);
+
+padding:35px;
+
+border-radius:18px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.stat:hover{
+
+transform:translateY(-6px);
+
+}
+
+.stat h3{
+
+font-size:42px;
+
+margin-bottom:10px;
+
+color:var(--secondary);
+
+}
+
+.stat p{
+
+color:var(--muted);
+
+}
+
+/* =========================
+TESTIMONIALS
+========================= */
+
+.testimonials{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:25px;
+
+}
+
+.testimonial{
+
+background:var(--card);
+
+padding:30px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.testimonial p{
+
+line-height:1.8;
+
+color:var(--muted);
+
+margin-bottom:20px;
+
+}
+
+.testimonial h4{
+
+color:var(--gold);
+
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+
+margin-top:80px;
+
+padding:40px 8%;
+
+text-align:center;
+
+background:#03130F;
+
+border-top:1px solid rgba(255,255,255,.06);
+
+}
+
+footer h3{
+
+font-size:30px;
+
+margin-bottom:10px;
+
+background:linear-gradient(90deg,var(--secondary),var(--gold));
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+footer p{
+
+color:var(--muted);
+
+margin-top:10px;
+
+line-height:1.8;
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+nav{
+
+display:none;
+
+}
+
+.menu{
+
+display:block;
+
+}
+
+.hero h1{
+
+font-size:45px;
+
+}
+
+.hero h2{
+
+font-size:22px;
+
+}
+
+.trust{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.section-title{
+
+font-size:35px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{
+
+padding-top:130px;
+
+}
+
+.hero h1{
+
+font-size:36px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+}
+
+.trust{
+
+grid-template-columns:1fr;
+
+}
+
+section{
+
+padding:70px 20px;
+
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Magnus Logo" />
-      <h1>Magnus</h1>
-    </div>
 
-    <input type="checkbox" id="menu-toggle" hidden />
-    <label for="menu-toggle" class="menu-toggle">⋮</label>
+<!-- =========================
+HEADER
+========================= -->
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#plans">Plans</a>
-      <a href="register.html">Register</a>
-    </nav>
-  </header>
+<header>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>🌟 Welcome to Magnus</h1>
-    <h2>Experience Financial Freedom — Empower Your Future</h2>
-    <p>Magnus offers unrestricted access to everyone within and outside Nigeria. 
-      You don't stay a day without completing 2–5 jobs at least.</p>
-    <div class="hero-image">
-      <img src="hero-banner.jpg" alt="Hero Banner" />
-    </div>
-    <a href="register.html" class="cta">Join Us Now</a>
-  </section>
+<div class="logo">
 
-  <!-- MAIN CONTENT SECTIONS -->
-  <section>
-    <h2>✨ What Magnus has in store for you as a user!</h2>
-    <ul style="text-align:left; display:inline-block;">
-      <li>▫️ Hot, In-demand skills</li>
-      <li>▫️ Unlimited access to digital products</li>
-      <li>▫️ Job offers from top international companies upon skill acquisition</li>
-      <li>▫️ Global rewards and recognition</li>
-      <li>▫️ Expert guidance from experienced coaches and instructors</li>
-      <li>▫️ Unlimited earning potential to achieve your financial goals</li>
-      <li>▫️ Earning over ₦30,000 daily is assured!</li>
-    </ul>
-  </section>
+<img src="logo.png" alt="Nextel Connect Logo">
 
-  <section id="plans">
-    <h2>Choose Your Preferred Plan</h2>
+<h1>Nextel Connect</h1>
 
-    <div class="plan-card">
-      <h3>🦾 Magnus Pro : ₦17,500</h3>
-      <ul>
-        <li>Unlimited Job requests</li>
-        <li>Unlimited Skills activities</li>
-        <li>Limited earning Structures</li>
-        <li>Limited Vendorship opportunities</li>
-        <li>Weekly payment</li>
-      </ul>
-      <p style="color:orange; font-weight:bold;">💡 Note: You can earn up to ₦15,000 daily.</p>
-      <a href="register.html" class="btn">Register for Magnus Pro</a>
-    </div>
+</div>
 
-    <div class="plan-card">
-      <div class="recommended">Recommended</div>
-      <h3>🔥 Magnus Business : ₦28,500</h3>
-      <ul>
-        <li>Unlimited job opportunities</li>
-        <li>Unlimited earning Structures</li>
-        <li>Unlimited skill activities</li>
-        <li>Unlimited job requests</li>
-        <li>Unlimited Vendorship opportunities</li>
-        <li>Daily payment remittance</li>
-      </ul>
-      <p style="color:orange; font-weight:bold;">💡 Note: You can earn up to ₦30,000 daily.</p>
-      <a href="register.html" class="btn">Register for Magnus Business</a>
-    </div>
+<nav>
 
-    <div class="plan-card">
-      <h3>⭐ Magnus Lite : ₦11,000</h3>
-      <ul>
-        <li>Unlimited job requests</li>
-        <li>Limited skills activities</li>
-        <li>Limited earning Structures</li>
-        <li>Limited Vendorship opportunities</li>
-        <li>Monthly payment remittance</li>
-      </ul>
-      <p style="color:orange; font-weight:bold;">💡 Note: You can earn up to ₦10,000 daily.</p>
-      <a href="register.html" class="btn">Register for Magnus Lite</a>
-    </div>
+<a href="#">Home</a>
 
-    <p style="margin-top:20px; font-size:14px; color:#bbb;">
-      The higher your package, the higher your earnings 🚀
-    </p>
-  </section>
+<a href="#services">Services</a>
 
-  <section>
-    <h2>Magnus Technology 👨‍💻</h2>
-    <div class="hero-image">
-      <img src="magnus-tech.jpg" alt="Magnus Technology" />
-    </div>
-  </section>
+<a href="#why">Why Us</a>
 
-  <section>
-    <h2>🔥 What MAGNUS Offers You</h2>
-    <ul style="text-align:left; display:inline-block;">
-      <li>✔️ Resale Rights – Earn while others are still learning</li>
-      <li>✔️ Trading (Buy & Resell) – Simple income opportunities</li>
-      <li>✔️ Instant Skill Application – Put knowledge into practice fast</li>
-      <li>✔️ Standby Data Entry Job Offer – Ready-to-go tasks for extra income</li>
-      <li>✔️ Discounted Digital Products – Access affordable tools that work</li>
-      <li>✔️ Multi-Layered Sales Rewards – Earn from direct and indirect sales</li>
-      <li>✔️ Global Reward Structure – Opportunities that scale worldwide</li>
-    </ul>
-  </section>
+<a href="#contact">Contact</a>
 
-  <section style="text-align:center; padding:50px 20px; background:#000;">
-    <h2 style="font-size:22px; margin-bottom:10px;">Register and Get Instant Access</h2>
-    <p style="color:#bbb; font-size:14px; margin-bottom:20px;">Limited Access – Register Now</p>
-    <a href="register.html" class="cta">Register Now</a>
-  </section>
+</nav>
 
-  <footer>
-    © 2025 Magnus. All Rights Reserved.
-  </footer>
+<div class="menu">☰</div>
+
+</header>
+
+<!-- =========================
+HERO
+========================= -->
+
+<section class="hero">
+
+<h1>
+
+Your World. Your Network.
+
+</h1>
+
+<h2>
+
+Fast, Secure & Reliable Digital Services
+
+</h2>
+
+<p>
+
+Nextel Connect is your trusted digital services platform, providing fast airtime, affordable data subscriptions, cable TV renewals, electricity bill payments, business solutions and secure online transactions. We make everyday digital services simple, reliable and accessible anytime, anywhere.
+
+</p>
+
+<img src="hero-banner.jpg" alt="Nextel Connect">
+
+<a href="register.html" class="cta">
+
+Get Started
+
+</a>
+
+<div class="trust">
+
+<div class="trust-box">
+
+<h3>24/7</h3>
+
+<p>
+
+Customer Support
+
+</p>
+
+</div>
+
+<div class="trust-box">
+
+<h3>99.9%</h3>
+
+<p>
+
+Reliable Uptime
+
+</p>
+
+</div>
+
+<div class="trust-box">
+
+<h3>100K+</h3>
+
+<p>
+
+Satisfied Customers
+
+</p>
+
+</div>
+
+<div class="trust-box">
+
+<h3>Instant</h3>
+
+<p>
+
+Service Delivery
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+SERVICES
+========================= -->
+
+<section id="services">
+
+<h2 class="section-title">
+
+Our Digital Services
+
+</h2>
+
+<p class="section-subtitle">
+
+Everything you need in one place. Nextel Connect provides fast, secure and convenient digital solutions designed for individuals and businesses.
+
+</p>
+
+<div class="services">
+
+<div class="service-card">
+
+<i>📶</i>
+
+<h3>Data Subscription</h3>
+
+<p>
+
+Purchase affordable mobile data bundles instantly across major networks with fast delivery and reliable activation.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i>📱</i>
+
+<h3>Airtime Top-Up</h3>
+
+<p>
+
+Recharge airtime quickly and securely for yourself, family, friends or customers anytime.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i>📺</i>
+
+<h3>Cable TV Payments</h3>
+
+<p>
+
+Renew your DSTV, GOtv and Startimes subscriptions without stress and enjoy uninterrupted entertainment.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i>⚡</i>
+
+<h3>Electricity Bills</h3>
+
+<p>
+
+Pay electricity bills instantly and receive your token within minutes from trusted providers.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i>💼</i>
+
+<h3>Business Solutions</h3>
+
+<p>
+
+Empower your business with digital payment solutions, customer services and online transaction support.
+
+</p>
+
+</div>
+
+<div class="service-card">
+
+<i>🔒</i>
+
+<h3>Secure Transactions</h3>
+
+<p>
+
+Every transaction is protected with modern security standards to ensure your information remains safe.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+WHY NEXTEL CONNECT
+========================= -->
+
+<section id="why">
+
+<h2 class="section-title">
+
+Why Choose Nextel Connect?
+
+</h2>
+
+<p class="section-subtitle">
+
+We focus on speed, reliability and customer satisfaction to deliver the best digital service experience.
+
+</p>
+
+<div class="why">
+
+<div class="why-card">
+
+<h3>Fast Delivery</h3>
+
+<p>
+
+Transactions are processed almost instantly, ensuring you receive services without unnecessary delays.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<h3>Trusted Platform</h3>
+
+<p>
+
+Thousands of customers trust Nextel Connect daily for secure and dependable digital services.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<h3>Affordable Pricing</h3>
+
+<p>
+
+Enjoy competitive rates and value-driven services designed to meet your everyday needs.
+
+</p>
+
+</div>
+
+<div class="why-card">
+
+<h3>24/7 Availability</h3>
+
+<p>
+
+Access our services at any time, from anywhere, using your mobile device or computer.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+LIVE STATS
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+
+Platform Statistics
+
+</h2>
+
+<p class="section-subtitle">
+
+Delivering dependable digital solutions to customers across multiple locations every day.
+
+</p>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>100K+</h3>
+
+<p>Happy Customers</p>
+
+</div>
+
+<div class="stat">
+
+<h3>99.9%</h3>
+
+<p>Service Uptime</p>
+
+</div>
+
+<div class="stat">
+
+<h3>24/7</h3>
+
+<p>Customer Support</p>
+
+</div>
+
+<div class="stat">
+
+<h3>Instant</h3>
+
+<p>Transaction Delivery</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+TESTIMONIALS
+========================= -->
+
+<section>
+
+<h2 class="section-title">
+
+What Our Customers Say
+
+</h2>
+
+<p class="section-subtitle">
+
+Customer satisfaction is our priority. Here's what some of our users have to say about Nextel Connect.
+
+</p>
+
+<div class="testimonials">
+
+<div class="testimonial">
+
+<p>
+
+"I've been using Nextel Connect for my airtime and data purchases for months. Every transaction is instant and reliable."
+
+</p>
+
+<h4>— Daniel A.</h4>
+
+</div>
+
+<div class="testimonial">
+
+<p>
+
+"Paying my electricity bills has never been this easy. The platform is fast, secure and very user-friendly."
+
+</p>
+
+<h4>— Esther O.</h4>
+
+</div>
+
+<div class="testimonial">
+
+<p>
+
+"I recommend Nextel Connect to everyone looking for affordable digital services with excellent customer support."
+
+</p>
+
+<h4>— Miracle E.</h4>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+CALL TO ACTION
+========================= -->
+
+<section style="text-align:center;">
+
+<h2 class="section-title">
+
+Ready to Get Started?
+
+</h2>
+
+<p class="section-subtitle">
+
+Join thousands of satisfied customers enjoying fast, secure and reliable digital services with Nextel Connect.
+
+</p>
+
+<a href="register.html" class="cta">
+
+Create Your Account
+
+</a>
+
+</section>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer id="contact">
+
+<h3>Nextel Connect</h3>
+
+<p>Your trusted partner for fast, secure and reliable digital solutions.</p>
+
+<p>© 2026 Nextel Connect. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+// Your popup JavaScript goes here
+
+</script>
+
 </body>
 </html>
